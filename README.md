@@ -13,10 +13,6 @@ Generate Sources:
 mvn generate-resources
 ````
 
-http://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.2/example_schemagen_basic.html
-
-http://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.2/schemagen-mojo.html
-
 # Links #
 * JAXB adapters for Java 8 Date and Time API (JSR-310) types
   from [migesok](https://github.com/migesok/jaxb-java-time-adapters)
