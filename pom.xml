@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.tse</groupId>
+    <artifactId>jaxb-examples</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.maven-compiler-plugin>3.5.1</version.maven-compiler-plugin>
+        <version.jaxb2-maven-plugin>2.2</version.jaxb2-maven-plugin>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.migesok</groupId>
+            <artifactId>jaxb-java-time-adapters</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/generated-resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${version.maven-compiler-plugin}</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>jaxb2-maven-plugin</artifactId>
+                    <version>${version.jaxb2-maven-plugin}</version>
+                    <executions>
+                        <execution>
+                            <id>schemagen</id>
+                            <goals>
+                                <goal>schemagen</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+
+                        <!-- Define the Files to generate a Schema for -->
+                        <sources>
+                            <source>src/main/java/de/tse/jaxb/examples/objects/Person.java</source>
+                        </sources>
+
+                        <!-- Namespace to File Mapping -->
+                        <transformSchemas>
+                            <transformSchema>
+                                <uri>http://xmldefs.mydefinitions/common</uri>
+                                <toPrefix>cmn</toPrefix>
+                                <toFile>Common.xsd</toFile>
+                            </transformSchema>
+                        </transformSchemas>
+
+                        <!-- Target Directory for generated Schema Files -->
+                        <outputDirectory>${project.basedir}/src/main/generated-resources/schemagen</outputDirectory>
+
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
