@@ -5,12 +5,13 @@ This Repository show some Examples for the Usage of JAXB:
 
 1. Save Java Object into a XML File
 2. Load a Java Object from a XML File
-3. Example of marshalling a more complex Object
-4. Example of unmarshalling a more complex Object with Schema Validation
+3. Marshalling a more complex Object
+4. Unmarshalling a more complex Object with Schema Validation
+5. Generate Java Classes from XSD File
 
 Execute to generate Sources:
 ````
-mvn clean
+mvn compile
 ````
 
 # Links #
