@@ -1,4 +1,5 @@
 .idea
 target
 *.iml
-generated-resources
+resources-gen
+java-gen

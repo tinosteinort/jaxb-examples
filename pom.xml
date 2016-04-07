@@ -12,6 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.maven-compiler-plugin>3.5.1</version.maven-compiler-plugin>
         <version.jaxb2-maven-plugin>2.2</version.jaxb2-maven-plugin>
+        <version.build-helper-maven-plugin>1.7</version.build-helper-maven-plugin>
     </properties>
 
     <dependencies>
@@ -25,7 +26,7 @@
     <build>
         <resources>
             <resource>
-                <directory>src/main/generated-resources</directory>
+                <directory>src/main/resources-gen</directory>
             </resource>
         </resources>
 
@@ -34,9 +35,15 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
         </plugins>
+
         <pluginManagement>
             <plugins>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -46,39 +53,87 @@
                         <target>1.8</target>
                     </configuration>
                 </plugin>
+
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>jaxb2-maven-plugin</artifactId>
                     <version>${version.jaxb2-maven-plugin}</version>
                     <executions>
+
+                        <!-- Generate Schema Files from Java Classes -->
                         <execution>
                             <id>schemagen</id>
                             <goals>
                                 <goal>schemagen</goal>
                             </goals>
+
+                            <configuration>
+
+                                <!-- Define the Files to generate a Schema for -->
+                                <sources>
+                                    <source>src/main/java/de/tse/jaxb/examples/objects/Person.java</source>
+                                </sources>
+
+                                <!-- Namespace to File Mapping -->
+                                <transformSchemas>
+                                    <transformSchema>
+                                        <uri>http://xmldefs.mydefinitions/common</uri>
+                                        <toPrefix>cmn</toPrefix>
+                                        <toFile>Common.xsd</toFile>
+                                    </transformSchema>
+                                </transformSchemas>
+
+                                <!-- Target Directory for generated Schema Files -->
+                                <outputDirectory>src/main/resources-gen/schemagen</outputDirectory>
+
+                            </configuration>
+                        </execution>
+
+                        <!-- Generate Java Classes from Schema Files -->
+                        <execution>
+                            <id>xjc</id>
+                            <goals>
+                                <goal>xjc</goal>
+                            </goals>
+
+                            <configuration>
+
+                                <!-- The Schema to generate Java Classes for -->
+                                <sources>
+                                    <source>src/main/resources/schemas/Dictionary.xsd</source>
+                                </sources>
+
+                                <!-- Define the Target Folder and Package -->
+                                <outputDirectory>src/main/java-gen/</outputDirectory>
+                                <packageName>de.tse.jaxb.examples.dictionary</packageName>
+
+                            </configuration>
+                        </execution>
+
+                    </executions>
+                </plugin>
+
+                <!-- Define additional Source Folder -->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${version.build-helper-maven-plugin}</version>
+                    <executions>
+                        <execution>
+                            <id>add-source</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>src/main/java-gen</source>
+                                </sources>
+                            </configuration>
                         </execution>
                     </executions>
-                    <configuration>
-
-                        <!-- Define the Files to generate a Schema for -->
-                        <sources>
-                            <source>src/main/java/de/tse/jaxb/examples/objects/Person.java</source>
-                        </sources>
-
-                        <!-- Namespace to File Mapping -->
-                        <transformSchemas>
-                            <transformSchema>
-                                <uri>http://xmldefs.mydefinitions/common</uri>
-                                <toPrefix>cmn</toPrefix>
-                                <toFile>Common.xsd</toFile>
-                            </transformSchema>
-                        </transformSchemas>
-
-                        <!-- Target Directory for generated Schema Files -->
-                        <outputDirectory>${project.basedir}/src/main/generated-resources/schemagen</outputDirectory>
-
-                    </configuration>
                 </plugin>
+
             </plugins>
         </pluginManagement>
     </build>

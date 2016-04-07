@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dct="http://xmldefs.mydefinitions/dictionary"
+           targetNamespace="http://xmldefs.mydefinitions/dictionary" version="1.0">
+
+    <xs:element name="Dictionary" type="dct:DictionaryType"/>
+
+    <xs:complexType name="DictionaryType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Entries" type="dct:DictionaryEntryListType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DictionaryEntryListType">
+        <xs:sequence>
+            <xs:element name="Word" type="dct:DictionaryEntryType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DictionaryEntryType">
+        <xs:sequence>
+            <xs:element name="Word" type="xs:string"/>
+            <xs:element name="Description" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

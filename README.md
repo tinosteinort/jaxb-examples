@@ -8,9 +8,9 @@ This Repository show some Examples for the Usage of JAXB:
 3. Example of marshalling a more complex Object
 4. Example of unmarshalling a more complex Object with Schema Validation
 
-Generate Sources:
+Execute to generate Sources:
 ````
-mvn generate-resources
+mvn clean
 ````
 
 # Links #
