@@ -121,7 +121,7 @@ Nur einige Möglichkeiten:
 * Objekt muss als "contained" gemarshallt werden, sonst gelangt es
     nicht in die XML
 
-### Weiterentwicklung von Java Klassen ###
+## Weiterentwicklung von Java Klassen ##
 
 * Mögliche Kompatibiliätsprobleme bei Weiterentwicklung
 * Unterscheidung
