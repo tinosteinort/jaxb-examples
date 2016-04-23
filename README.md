@@ -1,17 +1,18 @@
-Some JAXB Examples
-==================
+JAXB Beispiele
+==============
 
-This Repository show some Examples for the Usage of JAXB:
+Diese Repository enthält einige Beispiele zur Nutzung von JAXB:
 
-1. Save Java Object into a XML File
-2. Load a Java Object from a XML File
-3. Marshalling a more complex Object
-4. Unmarshalling a more complex Object with Schema Validation
-5. Generate Java Classes from XSD File
+1. Java Objekt in einer XML Datei speichern
+2. Java Objekt aus einer XML Datei laden
+3. Marshallen eines etwas komplizierteren Objekts
+4. Unmarshallen eines etwsa komplizierteren Objekts mit Schemavalidierung
+5. Generieren von Java Klassen aus einer XSD
+6. Generieren einer XSD aus Java Klassen
 
-Execute to generate Sources:
+Um die Sourcen zu generieren folgendes ausführen:
 ````
-mvn compile
+mvn generate-resources
 ````
 
 # Links #
