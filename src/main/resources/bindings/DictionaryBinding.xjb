@@ -1,0 +1,18 @@
+<jaxb:bindings version="1.0"
+              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+              xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+              xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+              jaxb:extensionBindingPrefixes="xjc">
+
+    <!-- Use with Care! xjc Namespace = JAXB RI Extension -->
+    <jaxb:globalBindings>
+        <xjc:simple/>
+    </jaxb:globalBindings>
+
+    <jaxb:bindings schemaLocation="../schemas/Dictionary.xsd" node="//xsd:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.tse.jaxb.examples.dictionary"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>

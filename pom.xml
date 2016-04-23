@@ -24,6 +24,8 @@
     </dependencies>
 
     <build>
+
+        <!-- Definition of additional Resource Folder -->
         <resources>
             <resource>
                 <directory>src/main/resources-gen</directory>
@@ -98,14 +100,21 @@
 
                             <configuration>
 
+                                <!-- Use with Care! Enables JAXB RI Extensions -->
+                                <extension>true</extension>
+
                                 <!-- The Schema to generate Java Classes for -->
                                 <sources>
                                     <source>src/main/resources/schemas/Dictionary.xsd</source>
                                 </sources>
 
+                                <!-- Binding File for Customisation -->
+                                <xjbSources>
+                                    <xjbSource>src/main/resources/bindings</xjbSource>
+                                </xjbSources>
+
                                 <!-- Define the Target Folder and Package -->
                                 <outputDirectory>src/main/java-gen/</outputDirectory>
-                                <packageName>de.tse.jaxb.examples.dictionary</packageName>
 
                             </configuration>
                         </execution>
@@ -113,7 +122,7 @@
                     </executions>
                 </plugin>
 
-                <!-- Define additional Source Folder -->
+                <!-- Definition of additional Source Folder -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
