@@ -1,12 +1,13 @@
 JAXB Beispiele
 ==============
 
-Diese Repository enthält einige Beispiele zur Nutzung von JAXB:
+Diese Repository enthält einige Beispiele zur Nutzung von JAXB. Damit alles
+Funktioniert, müssen die Klassen der Reihenfolge nach ausgeführt werden.
 
 1. Java Objekt in einer XML Datei speichern
 2. Java Objekt aus einer XML Datei laden
 3. Marshallen eines etwas komplizierteren Objekts
-4. Unmarshallen eines etwsa komplizierteren Objekts mit Schemavalidierung
+4. Unmarshallen eines etwas komplizierteren Objekts mit Schemavalidierung
 5. Generieren von Java Klassen aus einer XSD
 6. Generieren einer XSD aus Java Klassen
 
@@ -21,6 +22,10 @@ mvn generate-resources
 
 * Umwandlung Object -> XML (marshallen)
 * Unwandlung XML -> Objekt (unmarshallen)
+* Gedacht für Objekte mit fester Struktur
+    * wie "Customer", "PurchaseOrder", ...
+    * z.B. nicht für JDBC ResultSets
+        * Artikel unter "ResultSet XML" bei Google
 
 ## Ein paar Zahlen ##
 
@@ -45,12 +50,7 @@ mvn generate-resources
 
 # Nutzung #
 
-* Generelle Nutzung sehr einfach
-* Gedacht für Objekte mit fester Struktur
-    * wie "Customer", "PurchaseOrder", ...
-    * z.B. nicht für JDBC ResultSets
-        * Artikel unter "ResultSet XML" bei Google
-
+* Generelle Nutzung sehr einfach: [_01_ObjectToFile](_01_ObjectToFile.java)
 * Erstellung eines JAXBContext mit allen benötigten Klassen
     * Erstellung von Marshaller / Unmarshaller
     * Konfiguration des Marshallers:
@@ -92,6 +92,7 @@ Nur einige Möglichkeiten:
 * Anpassung von Datentypen
     * in XSD: `<javaType name=“java.util.Date“ xmlType=“xs:date“ parseMethod=“...“, printMethod=“...“/>`
     * XmlJavaTypeAdapter
+    * Java 8 Date and Time API wird nicht von Haus aus unterstützt
 * Anpassungen im Schema möglich oder in separater Binding Datei
 
 ## Einschränkungen ##
