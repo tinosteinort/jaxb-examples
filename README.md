@@ -18,6 +18,8 @@ mvn generate-resources
 
 # Einführung #
 
+JAXB v2.2.11 / April 2016
+
 ## Was macht JAXB? ##
 
 * Umwandlung Object -> XML (marshallen)
@@ -142,7 +144,7 @@ Nur einige Möglichkeiten:
 * Änderungen von Datentypen sind in der Regel nicht kompatibel
     * Integer zu String geht, aber int zu boolean z.B. nicht.
 
-# JAXB RI Features #
+# JAXB Reference Implementation Features #
 
 * Anpassungen sind nicht Teil der Spezifikation!
 * Können sich ändern
