@@ -50,7 +50,7 @@ mvn generate-resources
 
 # Nutzung #
 
-* Generelle Nutzung sehr einfach: [_01_ObjectToFile](_01_ObjectToFile.java)
+* Generelle Nutzung sehr einfach: [_01_ObjectToFile](src/main/java/de/tse/jaxb/examples/_01_ObjectToFile.java)
 * Erstellung eines JAXBContext mit allen benötigten Klassen
     * Erstellung von Marshaller / Unmarshaller
     * Konfiguration des Marshallers:
