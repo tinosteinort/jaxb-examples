@@ -1,15 +1,14 @@
 package de.tse.jaxb.examples;
 
-import de.tse.jaxb.examples.objects.*;
+import de.tse.jaxb.examples.objects.Address;
+import de.tse.jaxb.examples.objects.City;
+import de.tse.jaxb.examples.objects.Person;
+import de.tse.jaxb.examples.objects.Street;
 import org.xml.sax.SAXException;
 
-import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;

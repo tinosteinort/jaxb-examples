@@ -1,9 +1,6 @@
 package de.tse.jaxb.examples;
 
-import de.tse.jaxb.examples.objects.Address;
-import de.tse.jaxb.examples.objects.City;
 import de.tse.jaxb.examples.objects.SimplePerson;
-import de.tse.jaxb.examples.objects.Street;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
